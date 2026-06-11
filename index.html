@@ -382,12 +382,12 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
       <p>See the transformation for yourself. Real jobs, real results.</p>
     </div>
     <div class="ba-video-wrap">
-      <video class="ba-video" autoplay muted loop playsinline controls preload="metadata">
+      <video class="ba-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture>
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3ErzsncT9StOhbHWY9JvJRXxqn4/hf_20260611_121310_449c33f5-2eec-48dc-9a1a-d97c7a67ced4.mp4" type="video/mp4">
         Your browser doesn't support embedded video.
       </video>
       <p class="ba-cap" style="text-align:center;">Watch a Storm Guard transformation — before to after</p>
-      <video class="ba-video" style="margin-top:2rem;" autoplay muted loop playsinline controls preload="metadata">
+      <video class="ba-video" style="margin-top:2rem;" autoplay muted loop playsinline preload="metadata" disablepictureinpicture>
         <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3ErzsncT9StOhbHWY9JvJRXxqn4/hf_20260611_124613_ffde32fa-e413-429a-bceb-8b7b7e248e6a.mp4" type="video/mp4">
         Your browser doesn't support embedded video.
       </video>
@@ -763,6 +763,24 @@ revTrack.addEventListener('touchend',   ()=>{
 });
 window.addEventListener('resize', ()=>goRev(revIdx));
 goRev(0); resetRevTimer();
+
+/* Transformation videos — force play on view, no user controls needed */
+const baVideos = document.querySelectorAll('.ba-video');
+const vidObserver = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    const v = en.target;
+    if(en.isIntersecting){ v.play().catch(()=>{}); }
+    else { v.pause(); }
+  });
+}, {threshold: 0.25});
+baVideos.forEach(v=>{
+  v.muted = true;            /* belt-and-braces: required for autoplay policies */
+  vidObserver.observe(v);
+  /* if a browser blocks autoplay until interaction, retry on first touch/scroll */
+  const kick = ()=>{ v.play().catch(()=>{}); window.removeEventListener('touchstart',kick); window.removeEventListener('scroll',kick); };
+  window.addEventListener('touchstart', kick, {once:true, passive:true});
+  window.addEventListener('scroll', kick, {once:true, passive:true});
+});
 
 /* Contact form -> WhatsApp */
 document.getElementById('quoteForm').addEventListener('submit', e=>{
