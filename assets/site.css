@@ -87,6 +87,11 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
 .hero h1 .red{color:#FF5A5A;}
 .hero p{font-size:clamp(1rem,2vw,1.18rem);color:rgba(255,255,255,.85);max-width:540px;margin-bottom:1.8rem;}
 .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;}
+.hero-center{max-width:760px;margin-left:auto;margin-right:auto;text-align:center;}
+.hero-center p{margin-left:auto;margin-right:auto;}
+.hero-center .hero-btns{justify-content:center;}
+.hero-logo{margin:0 auto 1.7rem;line-height:0;}
+.hero-logo img{display:inline-block;width:min(480px,86%);height:auto;background:#fff;border-radius:16px;padding:.7rem 1rem;box-shadow:var(--shadow-lg);}
 .hero-dots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:.55rem;}
 .hero-dots button{width:34px;height:4px;border:none;border-radius:2px;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s;}
 .hero-dots button.active{background:var(--red);}
