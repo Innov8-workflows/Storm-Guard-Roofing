@@ -93,7 +93,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
 
 /* ===== PAGE HERO (inner pages) ===== */
 .phero{position:relative;margin-top:72px;background:var(--navy-deep);color:#fff;overflow:hidden;}
-.phero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.30;}
+.phero-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.42;}
 .phero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,21,48,.93) 0%,rgba(19,28,61,.72) 55%,rgba(19,28,61,.45) 100%);}
 .phero .container{position:relative;z-index:2;padding:clamp(2.8rem,6vw,4.6rem) 0;}
 .phero .eyebrow{color:#FF5A5A;}
