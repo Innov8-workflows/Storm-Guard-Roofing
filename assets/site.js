@@ -164,7 +164,7 @@
       var postcode = val("fPostcode");
       var service = (document.getElementById("fService") || {}).value || "";
       var msg = val("fMsg");
-      var text = "Hi Storm Guard, I'd like a free quote.\n\nName: " + name + "\nPhone: " + phone;
+      var text = "Hi Storm Guard, I'd like a free quote.\nEnquiry from your website (stormguardroofingdundee.co.uk).\n\nName: " + name + "\nPhone: " + phone;
       if (postcode) text += "\nPostcode: " + postcode;
       if (service) text += "\nService: " + service;
       if (msg) text += "\n\nDetails: " + msg;
