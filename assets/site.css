@@ -152,6 +152,9 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
 .ba-tag.before{left:.8rem;}
 .ba-tag.after{right:.8rem;background:var(--red);}
 .ba-cap{margin-top:.7rem;font-weight:600;font-size:.92rem;color:var(--navy-deep);}
+.work-figure{margin:1rem 0 0;}
+.work-figure img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-lg);background:var(--navy-deep);}
+.work-figure figcaption{margin-top:.7rem;font-weight:600;font-size:.92rem;color:var(--navy-deep);}
 
 /* ===== PROJECT SHOWCASE (alternating media + text rows) ===== */
 .showcase{display:grid;gap:clamp(2.2rem,5vw,4rem);}
