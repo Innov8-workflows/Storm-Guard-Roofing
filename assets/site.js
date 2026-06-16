@@ -107,6 +107,25 @@
     });
   }
 
+  /* ---- Lazy background images (defer below-the-fold photos) ---- */
+  var lazyBgs = document.querySelectorAll("[data-bg]");
+  if (lazyBgs.length) {
+    var loadBg = function (el) {
+      el.style.backgroundImage = "url('" + el.getAttribute("data-bg") + "')";
+      el.removeAttribute("data-bg");
+    };
+    if ("IntersectionObserver" in window) {
+      var bgObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { loadBg(en.target); bgObserver.unobserve(en.target); }
+        });
+      }, { rootMargin: "300px" });
+      lazyBgs.forEach(function (el) { bgObserver.observe(el); });
+    } else {
+      lazyBgs.forEach(loadBg);
+    }
+  }
+
   /* ---- Quote form -> WhatsApp ---- */
   var quoteForm = document.getElementById("quoteForm");
   if (quoteForm) {
