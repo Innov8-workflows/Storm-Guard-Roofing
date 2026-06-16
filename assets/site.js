@@ -34,6 +34,16 @@
     });
   }
 
+  /* ---- Mobile menu: collapsible Services accordion ---- */
+  var mmToggle = document.querySelector(".mm-toggle");
+  var mmGroup = document.getElementById("mmServices");
+  if (mmToggle && mmGroup) {
+    mmToggle.addEventListener("click", function () {
+      var isOpen = mmGroup.classList.toggle("open");
+      mmToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+
   /* ---- Hero video: nudge play if autoplay is blocked (e.g. iOS Low Power Mode) ---- */
   var heroVid = document.querySelector(".hero-video");
   if (heroVid) {

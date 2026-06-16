@@ -71,7 +71,11 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
 .mobile-menu{display:none;background:#fff;border-top:1px solid var(--steel-light);max-height:80vh;overflow-y:auto;}
 .mobile-menu.open{display:block;}
 .mobile-menu a{display:block;padding:.95rem 5%;font-weight:600;color:var(--navy-deep);border-bottom:1px solid var(--steel-light);}
-.mobile-menu .mm-head{font-family:'Barlow Condensed',sans-serif;font-style:italic;text-transform:uppercase;letter-spacing:.06em;color:var(--text-soft);font-size:.78rem;padding:.8rem 5% .2rem;}
+.mobile-menu .mm-toggle{display:flex;align-items:center;justify-content:space-between;gap:.5rem;width:100%;background:none;border:none;border-bottom:1px solid var(--steel-light);cursor:pointer;font-family:inherit;font-size:1rem;font-weight:600;color:var(--navy-deep);padding:.95rem 5%;text-align:left;}
+.mobile-menu .mm-caret{width:18px;height:18px;flex:none;transition:transform .25s ease;color:var(--red);}
+.mobile-menu .mm-toggle[aria-expanded="true"] .mm-caret{transform:rotate(180deg);}
+.mobile-menu .mm-sub-group{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+.mobile-menu .mm-sub-group.open{max-height:34rem;}
 .mobile-menu .mm-sub{padding-left:8%;font-size:.9rem;font-weight:500;}
 
 /* ===== HERO (home) ===== */
