@@ -43,10 +43,9 @@ body{
 .card-head{ position:relative; padding:66px 28px 32px; text-align:center; color:#fff; overflow:hidden; background:var(--navy-deep); }
 .head-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
 .head-overlay{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(14,21,48,.30) 0%, rgba(14,21,48,.55) 50%, rgba(19,28,61,.85) 82%, rgba(19,28,61,.96) 100%); }
-.logo-badge{ position:relative; z-index:2; display:inline-flex; padding:11px 16px; margin:0 auto 16px; background:#fff; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.30); }
-.logo-badge img{ height:48px; width:auto; object-fit:contain; display:block; mix-blend-mode:multiply; }
-.card-head .biz{ position:relative; z-index:2; font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:800; text-transform:uppercase; letter-spacing:.01em; font-size:1.5rem; line-height:1.1; text-shadow:0 1px 14px rgba(0,0,0,.5); }
-.card-head .biz span{ display:block; font-family:'Inter',sans-serif; font-style:normal; font-size:.7rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--red-light); margin-top:10px; }
+.rev-logo{ position:relative; z-index:2; display:block; margin:0 auto 14px; line-height:0; }
+.rev-logo img{ width:min(320px,80%); height:auto; filter:drop-shadow(0 6px 20px rgba(0,0,0,.55)); }
+.biz-tag{ position:relative; z-index:2; font-family:'Inter',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--red-light); text-shadow:0 1px 10px rgba(0,0,0,.5); }
 
 /* BODY */
 .card-body{ padding:34px 30px 30px; text-align:center }
@@ -114,10 +113,8 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
         <source src="hero-orbital.mp4" type="video/mp4">
       </video>
       <div class="head-overlay" aria-hidden="true"></div>
-      <div class="logo-badge"><img src="logo.jpeg" alt="Storm Guard Roofing &amp; Building logo"></div>
-      <div class="biz">Storm Guard Roofing &amp; Building
-        <span>Roofing &amp; Building Specialists · Dundee &amp; Angus</span>
-      </div>
+      <picture class="rev-logo"><source srcset="logo-clear.webp" type="image/webp"><img src="logo-clear.png" alt="Storm Guard Roofing &amp; Building"></picture>
+      <p class="biz-tag">Roofing &amp; Building Specialists · Dundee &amp; Angus</p>
     </header>
 
     <div class="card-body">
