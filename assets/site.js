@@ -34,6 +34,23 @@
     });
   }
 
+  /* ---- Hero video: nudge play if autoplay is blocked (e.g. iOS Low Power Mode) ---- */
+  var heroVid = document.querySelector(".hero-video");
+  if (heroVid) {
+    var playHero = function () { return heroVid.play(); };
+    var heroPromise = playHero();
+    if (heroPromise && heroPromise.catch) {
+      heroPromise.catch(function () {
+        var evs = ["touchstart", "pointerdown", "scroll", "click"];
+        var kick = function () {
+          playHero().catch(function () {});
+          evs.forEach(function (ev) { window.removeEventListener(ev, kick); });
+        };
+        evs.forEach(function (ev) { window.addEventListener(ev, kick, { passive: true }); });
+      });
+    }
+  }
+
   /* ---- Hero slider (home) ---- */
   var slides = document.querySelectorAll(".hero-slide");
   var dotsWrap = document.getElementById("heroDots");
