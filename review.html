@@ -32,10 +32,7 @@ body{
 
 /* HEADER with hero animation */
 .card-head{ position:relative; padding:66px 28px 32px; text-align:center; color:#fff; overflow:hidden; background:var(--navy-deep); }
-.head-anim{ position:absolute; inset:0; z-index:0; }
-.hslide{ position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1.2s ease; transform:scale(1.06); }
-.hslide.active{ opacity:1; animation:hzoom 7s ease forwards; }
-@keyframes hzoom{ from{transform:scale(1.09)} to{transform:scale(1)} }
+.head-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
 .head-overlay{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(14,21,48,.30) 0%, rgba(14,21,48,.55) 50%, rgba(19,28,61,.85) 82%, rgba(19,28,61,.96) 100%); }
 .logo-badge{ position:relative; z-index:2; display:inline-flex; padding:11px 16px; margin:0 auto 16px; background:#fff; border-radius:14px; box-shadow:0 10px 24px rgba(0,0,0,.30); }
 .logo-badge img{ height:48px; width:auto; object-fit:contain; display:block; mix-blend-mode:multiply; }
@@ -104,11 +101,9 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
 <body>
   <main class="card">
     <header class="card-head">
-      <div class="head-anim" aria-hidden="true">
-        <div class="hslide" style="background-image:url('hero-main.jpg')"></div>
-        <div class="hslide" style="background-image:url('hero1.jpeg')"></div>
-        <div class="hslide" style="background-image:url('hero2.jpeg')"></div>
-      </div>
+      <video class="head-video" autoplay muted loop playsinline preload="auto" poster="hero-orbital-poster.jpg" aria-hidden="true" disablepictureinpicture>
+        <source src="hero-orbital.mp4" type="video/mp4">
+      </video>
       <div class="head-overlay" aria-hidden="true"></div>
       <div class="logo-badge"><img src="logo.jpeg" alt="Storm Guard Roofing &amp; Building logo"></div>
       <div class="biz">Storm Guard Roofing &amp; Building
@@ -188,14 +183,7 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
   setLink('fbBtn', FACEBOOK_REVIEW_URL,
       "https://www.facebook.com/search/top?q=" + encodeURIComponent("Storm Guard Roofing & Building"));
 
-  /* Hero animation — crossfading, slow-zoom slideshow (matches the home page hero) */
-  var slides = document.querySelectorAll('.hslide');
-  if (slides.length){
-    var i = 0;
-    var show = function(n){ for (var k=0;k<slides.length;k++){ slides[k].classList.toggle('active', k===n); } };
-    show(0);
-    setInterval(function(){ i = (i+1) % slides.length; show(i); }, 4500);
-  }
+  /* Header background is the autoplaying orbital hero video — no JS needed */
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
