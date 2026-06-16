@@ -6,7 +6,7 @@
   "use strict";
 
   /* Single source of truth for the WhatsApp number (intl format) */
-  var WA_NUMBER = "447479508148";
+  var WA_NUMBER = "447950814881";
 
   /* ---- Year stamp ---- */
   var yr = document.getElementById("yr");
