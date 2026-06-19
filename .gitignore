@@ -1,0 +1,29 @@
+# ─────────────────────────────────────────────────────────────
+# Working / source assets — NOT part of the live site.
+# These live in the project folder but must never be deployed.
+# ─────────────────────────────────────────────────────────────
+
+# Client PII / unrelated business
+onboarding submission.html
+onboarding submission_files/
+Form/
+
+# Master / source video files (only the optimised versions ship)
+orbital01.mp4
+hero-orbital-02.jpeg
+hero-orbital-03.mp4
+*-source.mp4
+
+# Master / unused image files
+logo-polished.png
+hero.jpeg
+logo-fb*.png
+Facbeook background.png
+*acebook*.png
+storm-guard-laptop.png
+
+# Marketing / QR codes / full-page screenshots
+*_qr.png
+*review_qr*
+*.co.uk_*.png
+*screenshot*.png
