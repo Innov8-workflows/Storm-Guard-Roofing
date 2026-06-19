@@ -8,6 +8,27 @@
   /* Single source of truth for the WhatsApp number (intl format) */
   var WA_NUMBER = "447950814881";
 
+  /* ---- GA4 conversion events (click-to-call, WhatsApp, quote form) ---- */
+  function sgTrack(name, params) {
+    if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var a = (t && t.closest) ? t.closest("a[href]") : null;
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    if (href.indexOf("tel:") === 0) {
+      sgTrack("click_to_call", {
+        phone_number: href.replace("tel:", ""),
+        link_text: (a.textContent || "").replace(/\s+/g, " ").trim().slice(0, 60)
+      });
+    } else if (/wa\.me\/|api\.whatsapp\.com|whatsapp:/.test(href)) {
+      sgTrack("whatsapp_click", {
+        source: a.classList.contains("wa-float") ? "floating_widget" : "cta_link"
+      });
+    }
+  });
+
   /* ---- Year stamp ---- */
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
@@ -168,6 +189,7 @@
       if (postcode) text += "\nPostcode: " + postcode;
       if (service) text += "\nService: " + service;
       if (msg) text += "\n\nDetails: " + msg;
+      sgTrack("quote_form_submit", { service: service || "unspecified" });
       window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
     });
   }
