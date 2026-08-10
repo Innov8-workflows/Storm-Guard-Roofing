@@ -8,6 +8,62 @@
   /* Single source of truth for the WhatsApp number (intl format) */
   var WA_NUMBER = "447950814881";
 
+  /* ---- Lead logger -> Google Sheet (Apps Script) ----------------------
+     Logs every contact action: quote form, click-to-call, WhatsApp and
+     email clicks. Deliberately NOT consent-gated — it sets no cookies and
+     stores no identifiers, so it isn't analytics, and a declined banner
+     must never cost a real enquiry. (The GA4 block below IS analytics.) */
+  var LEAD_URL = "https://script.google.com/macros/s/AKfycbwotsxHho845Pb-Y7bzQD-r3CpAgI6B3dxSIkESKcMNZfJCe8Cx09fMJwzuSSbA8Nckuw/exec";
+
+  /* NEVER navigator.sendBeacon here: it silently drops the /exec
+     cross-origin 302 while returning true, so leads vanish with no error
+     anywhere. fetch + keepalive + no-cors + text/plain is the only
+     combination that works (text/plain avoids a CORS preflight that
+     Apps Script won't answer). */
+  function sendLead(d) {
+    try {
+      d.page = location.pathname || "/";
+      fetch(LEAD_URL, {
+        method: "POST", mode: "no-cors", keepalive: true,
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
+        body: JSON.stringify(d)
+      });
+    } catch (err) {}
+  }
+
+  /* Where on the page the click happened -> the Sheet's Source column. */
+  function leadSource(el) {
+    if (!el || !el.closest) return "page";
+    if (el.classList && el.classList.contains("wa-float")) return "whatsapp widget";
+    if (el.closest("#mobileMenu")) return "mobile menu";
+    if (el.closest(".nav-dd") || el.closest("#nav")) return "nav";
+    if (el.closest(".hero")) return "hero";
+    if (el.closest(".phero")) return "page hero";
+    if (el.closest(".quote-card")) return "quote box";
+    if (el.closest(".contact-info")) return "contact card";
+    if (el.closest(".faq-a")) return "FAQ answer";
+    if (el.closest("form")) return "contact form";
+    if (el.closest(".final")) return "bottom CTA";
+    if (el.closest("footer")) return "footer";
+    return "page";
+  }
+
+  /* Capture phase, so the row is away before the tel:/wa.me/mailto:
+     navigation tears the page down; keepalive lets it survive unload. */
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    var a = (t && t.closest) ? t.closest("a[href]") : null;
+    if (!a) return;
+    var h = a.getAttribute("href") || "";
+    if (h.indexOf("tel:") === 0) {
+      sendLead({ type: "Call click", phone: h.replace("tel:", ""), source: leadSource(a) });
+    } else if (/wa\.me\/|api\.whatsapp\.com|whatsapp:/.test(h)) {
+      sendLead({ type: "WhatsApp click", source: leadSource(a) });
+    } else if (h.indexOf("mailto:") === 0) {
+      sendLead({ type: "Email click", source: leadSource(a) });
+    }
+  }, true);
+
   /* ---- GA4 conversion events (click-to-call, WhatsApp, quote form) ---- */
   function sgTrack(name, params) {
     if (typeof window.gtag === "function") { window.gtag("event", name, params || {}); }
@@ -190,6 +246,13 @@
       if (service) text += "\nService: " + service;
       if (msg) text += "\n\nDetails: " + msg;
       sgTrack("quote_form_submit", { service: service || "unspecified" });
+      /* Postcode has no column of its own — fold it into Details so it
+         still reaches the Sheet and the alert email. */
+      sendLead({
+        type: "Quote form", name: name, phone: phone, service: service,
+        details: (postcode ? "Postcode: " + postcode + (msg ? "\n" : "") : "") + msg,
+        source: "contact form"
+      });
       window.open("https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text), "_blank");
     });
   }
