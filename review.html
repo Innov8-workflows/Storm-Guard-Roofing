@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-<!-- Google tag (gtag.js) -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.myjobquote.co.uk https://crm.innov8workflows.co.uk; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://www.myjobquote.co.uk; img-src 'self' data: https://www.myjobquote.co.uk https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; media-src 'self' data: https://d8j0ntlcm91z4.cloudfront.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://crm.innov8workflows.co.uk https://www.myjobquote.co.uk https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; form-action 'self'; manifest-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3BQ2TE5PS5"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -60,7 +60,6 @@ body{
 .card{ width:100%; max-width:560px; background:#fff; border:1px solid var(--line); border-radius:20px; overflow:hidden;
   box-shadow:0 24px 60px -20px rgba(14,21,48,.5), 0 4px 12px rgba(14,21,48,.08); }
 
-/* HEADER with hero animation */
 .card-head{ position:relative; padding:66px 28px 32px; text-align:center; color:#fff; overflow:hidden; background:var(--navy-deep); }
 .head-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
 .head-overlay{ position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(14,21,48,.30) 0%, rgba(14,21,48,.55) 50%, rgba(19,28,61,.85) 82%, rgba(19,28,61,.96) 100%); }
@@ -68,7 +67,6 @@ body{
 .rev-logo img{ width:min(320px,80%); height:auto; filter:drop-shadow(0 6px 20px rgba(0,0,0,.55)); }
 .biz-tag{ position:relative; z-index:2; font-family:'Inter',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--red-light); text-shadow:0 1px 10px rgba(0,0,0,.5); }
 
-/* BODY */
 .card-body{ padding:34px 30px 30px; text-align:center }
 .stars{ font-size:1.6rem; letter-spacing:6px; color:var(--gold); line-height:1; margin-bottom:16px }
 .eyebrow{ display:inline-block; font-family:'Barlow Condensed',sans-serif; font-style:italic; font-size:.82rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--red); margin-bottom:8px }
@@ -79,7 +77,6 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
 .favour h2{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:700; text-transform:uppercase; font-size:1.5rem; color:var(--navy-deep); margin-bottom:8px }
 .favour p{ font-size:.96rem; color:var(--muted) }
 
-/* BUTTONS */
 .btn{ display:flex; align-items:center; justify-content:center; gap:12px; width:100%; padding:16px 22px; margin-top:18px;
   font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:1.18rem;
   border-radius:12px; border:2px solid transparent; cursor:pointer; text-decoration:none; transition:transform .15s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease; }
@@ -94,24 +91,20 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
 .btn-facebook .btn-icon{ background:transparent }
 .btn-facebook .btn-icon svg{ width:27px; height:27px }
 
-/* STEPS */
 .steps{ list-style:none; text-align:left; max-width:390px; margin:22px auto 4px }
 .steps li{ display:flex; align-items:flex-start; gap:14px; padding:11px 0; font-size:.95rem; color:var(--text); border-bottom:1px solid var(--line) }
 .steps li:last-child{ border-bottom:none }
 .steps .num{ flex-shrink:0; width:28px; height:28px; border-radius:7px; background:var(--red); color:#fff; transform:skewX(-7deg);
   display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.9rem; font-family:'Barlow Condensed',sans-serif; font-style:italic }
 
-/* DIVIDER */
 .divider{ display:flex; align-items:center; gap:14px; margin:30px 0 6px; color:var(--muted); font-size:.82rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-family:'Barlow Condensed',sans-serif; font-style:italic }
 .divider::before,.divider::after{ content:""; flex:1; height:1px; background:var(--line) }
 .alt-note{ font-size:.92rem; color:var(--muted); margin-bottom:2px }
 
-/* REASSURANCE */
 .reassure{ margin-top:26px; padding-top:22px; border-top:1px solid var(--line); font-size:.9rem; color:var(--muted) }
 .reassure a{ color:var(--navy); font-weight:700; text-decoration:none; white-space:nowrap }
 .reassure a:hover{ text-decoration:underline; color:var(--red) }
 
-/* FOOTER */
 .card-foot{ padding:18px 24px; text-align:center; background:var(--navy-deep); color:#aeb6c6; font-size:.78rem; letter-spacing:.02em }
 .card-foot .credit{ display:block; margin-top:6px; color:rgba(174,182,198,.6); font-size:.72rem }
 .card-foot .credit a{ color:#aeb6c6; text-decoration:none }
@@ -188,16 +181,7 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
   </main>
 
 <script>
-  /* ============================================================
-     REVIEW LINKS — paste Storm Guard's real links below.
 
-     GOOGLE:   Google Business Profile → "Ask for reviews" → copy link
-               (looks like  https://g.page/r/XXXXXXXXXXXX/review ).
-     FACEBOOK: the Facebook Page's reviews tab URL
-               (looks like  https://www.facebook.com/YourPage/reviews ).
-
-     Until set, each button safely falls back to a search so it never breaks.
-     ============================================================ */
   var GOOGLE_REVIEW_URL   = "PASTE_GOOGLE_REVIEW_LINK_HERE";
   var FACEBOOK_REVIEW_URL = "https://www.facebook.com/profile.php?id=61590610597081&sk=reviews";
 
@@ -209,8 +193,6 @@ h1{ font-family:'Barlow Condensed',sans-serif; font-style:italic; font-weight:80
       "https://www.google.com/search?q=" + encodeURIComponent("Storm Guard Roofing & Building Dundee reviews"));
   setLink('fbBtn', FACEBOOK_REVIEW_URL,
       "https://www.facebook.com/search/top?q=" + encodeURIComponent("Storm Guard Roofing & Building"));
-
-  /* Header background is the autoplaying orbital hero video — no JS needed */
 
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
