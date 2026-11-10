@@ -442,7 +442,7 @@
       </a>
       <a class="c-line" href="mailto:stormguardroofing.info@dr.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-        <div>stormguardroofing.info@dr.com<small>Email us anytime</small></div>
+        <div>stormguardroofing.info<wbr>@dr.com<small>Email us anytime</small></div>
       </a>
     </div>
     <form class="form" id="quoteForm">
@@ -563,6 +563,7 @@
 <script src="https://www.myjobquote.co.uk/js/widget.js"></script>
 <script>
   if (typeof MyJobQuoteWidget !== 'undefined') {
+    MyJobQuoteWidget.prototype.checkFontsAvailability = function (fonts) { return Promise.resolve(fonts); };
     (new MyJobQuoteWidget).init({
       targetId: 'mjq-widget',
       userId: 'usr_1r82khmcovptartxpwqowhp4s2aj',

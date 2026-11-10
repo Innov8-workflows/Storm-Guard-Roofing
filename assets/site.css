@@ -194,6 +194,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none;}
 .c-line{display:flex;align-items:center;gap:.9rem;background:#fff;border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow);margin-bottom:.9rem;font-weight:600;color:var(--navy-deep);transition:transform .15s;}
 .c-line:hover{transform:translateX(4px);}
 .c-line svg{width:24px;height:24px;color:var(--red);flex:none;}
+.c-line>div{min-width:0;overflow-wrap:anywhere;}
 .c-line small{display:block;font-weight:400;color:var(--text-soft);font-size:.8rem;}
 .form{background:#fff;border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-lg);border-top:4px solid var(--red);}
 .form h3{font-size:1.5rem;font-style:italic;margin-bottom:.4rem;}
